@@ -38,5 +38,5 @@ export interface ChangePassword{
 
 export interface ChangeLogin{
     password:string
-    newLogin:string
+    login:string
 }

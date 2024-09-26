@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface ChangeLogin{
     password:string
-    newLogin:string
+    login:string
 }
 export const ChangeLogin = () => {
     const {register, handleSubmit, formState:{errors}} = useForm<ChangeLogin>()
@@ -26,9 +26,9 @@ export const ChangeLogin = () => {
 
     const handleLoginChange:SubmitHandler<ChangeLogin>  = (data) => {
 
-        const {password, newLogin} = data
+        const {password, login} = data
         
-        const changes:ChangeLogin = { password, newLogin}
+        const changes:ChangeLogin = { password, login}
         handleChangeLogin(changes)
         .then(response => {
             if(response.status == "error" && response.message){
@@ -68,12 +68,12 @@ export const ChangeLogin = () => {
                                     {...register("password", {required:true})}
                                 />
                                 {
-                                   errors.newLogin && <p>new login required</p>
+                                   errors.login && <p>new login required</p>
                                 }
                                 <MDBInput
                                     wrapperClass='mb-4'
                                     type='text' placeholder='new login'
-                                    {...register("newLogin",{required:true})}
+                                    {...register("login",{required:true})}
                                 />
                                 <button type='submit' className='btn btn-outline-info' >Submit</button>
                             </form>
