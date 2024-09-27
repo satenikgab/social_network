@@ -5,12 +5,13 @@ import { IContextType } from "../../../lib/types"
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
 import { BASE_URL, DEFAULT_PIC } from "../../../lib/constant";
 import { useRef } from "react";
-import { handlePictureUpload } from "../../../lib/api";
+import { handleCoverPictureUpload, handlePictureUpload } from "../../../lib/api";
 
 export  function Dashboard() {
     const {account, setAccount} = useOutletContext<IContextType>()
 
     const photo = useRef<HTMLInputElement | null>(null)
+    const cover = useRef<HTMLInputElement | null>(null)
     
 
     const handlePic = () => {
@@ -21,9 +22,25 @@ export  function Dashboard() {
           form.append("picture", file)
           handlePictureUpload(form)
           .then(response => {
-            console.log(response)
+           
             if(response.payload){
               setAccount({...account,picture:response.payload as string})
+            }
+          })
+        }
+      }
+    }
+
+    const handleCoverPicture = () => {
+      if(cover.current){
+        const file = cover.current.files?.[0]
+        if(file){
+          const form = new FormData()
+          form.append("cover", file)
+          handleCoverPictureUpload(form)
+          .then(response => {
+            if(response.payload){
+              setAccount({...account,cover:response.payload as string})
             }
           })
         }
@@ -45,14 +62,23 @@ export  function Dashboard() {
              style={{display:"none"}}
           />
             
+          <input type="file"
+           ref={cover} 
+           onChange={handleCoverPicture}
+           style={{display:"none"}}
+           />
             
             
             <MDBCard>
-              <div className="rounded-top text-white d-flex flex-row" 
-              style={{ backgroundColor: '#000', height: '200px' }}>
-                <div className="ms-4 mt-5 d-flex flex-column" 
-                style={{ width: '150px' }}>
-                  
+             
+                   <div className="rounded-top text-white d-flex flex-row cover" 
+                  style={{ 
+                    backgroundColor: "black",
+                    backgroundImage: `url(${BASE_URL + account.cover})`,
+                    backgroundSize: "cover",  
+                    backgroundPosition: "center"
+                  }}
+                  onClick={()=>cover.current?.click()}>
                   
                   
                   
@@ -63,8 +89,7 @@ export  function Dashboard() {
                     fluid style={{ width: '150px', zIndex: '1' }} 
                     onClick={() => photo.current?.click()}
                     />
-                  
-                </div>
+                
                 
                 <div className="ms-3" 
                 style={{ marginTop: '130px' }}>
@@ -76,7 +101,8 @@ export  function Dashboard() {
               
               
               <div className="p-4 text-black" 
-              style={{ backgroundColor: '#f8f9fa' }}>
+              style={{ backgroundColor: '#f8f9fa' }}
+              >
                 <div className="d-flex justify-content-end text-center py-1">
                   <div>
                     <MDBCardText className="mb-1 h5">0</MDBCardText>
