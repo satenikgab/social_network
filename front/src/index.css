@@ -59,3 +59,40 @@ a.active{
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
   }
+
+.list{
+  display: flex;
+  padding: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.list img{
+  width: 150px;
+  height: 150px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.btn{
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.private {
+  background: #ffcccb;
+  color: #b22222;
+}
+
+.public {
+  background: #d4edda;
+  color: #155724;
+}
+.privacy{
+  height: 50px;
+  width: 50px;
+}

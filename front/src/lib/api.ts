@@ -47,3 +47,28 @@ export const handleCoverPictureUpload = async(data:FormData):Promise<IResponse> 
     const response = await Axios.patch("/cover/upload", data)
     return response.data
 }
+
+export const handleGetPosts = async():Promise<IResponse> => {
+    const response = await Axios.get("/posts")
+    return response.data
+}
+
+export const handleAddPost = async(data:FormData):Promise<IResponse> => {
+    const response = await Axios.post("/posts", data)
+    return response.data
+}
+
+export const handleSearch = async (text:string):Promise<IResponse> => {
+    const response = await Axios.get("/search/" + text)
+    return response.data
+}
+
+export const handleGetUserAccount = async (id:string):Promise<IResponse> => {
+    const response = await Axios.get("/account/" + id)
+    return response.data
+}
+
+export const handleAccountPrivacy = async():Promise<IResponse> => {
+    const response = await Axios.patch("account/set")
+    return response.data
+}

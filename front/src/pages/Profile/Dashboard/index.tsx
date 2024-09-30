@@ -94,7 +94,7 @@ export  function Dashboard() {
                 <div className="ms-3" 
                 style={{ marginTop: '130px' }}>
                   <MDBTypography 
-                  tag="h5">{account.name}{account.surname}</MDBTypography>
+                  tag="h5">{account.name} {account.surname}</MDBTypography>
                   <MDBCardText>Yereven</MDBCardText>
                 </div>
               </div>

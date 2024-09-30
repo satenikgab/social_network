@@ -40,3 +40,19 @@ export interface ChangeLogin{
     password:string
     login:string
 }
+
+export interface IPost{
+    id:number
+    title:string
+    picture:string
+
+}
+
+export interface IAccount extends IUser{
+    following:[]
+    followers:[]
+    available:boolean
+    connection:[]
+    posts:[]
+    
+}
