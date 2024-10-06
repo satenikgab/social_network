@@ -69,6 +69,57 @@ export const handleGetUserAccount = async (id:string):Promise<IResponse> => {
 }
 
 export const handleAccountPrivacy = async():Promise<IResponse> => {
-    const response = await Axios.patch("account/set")
+    const response = await Axios.patch("/account/set")
+    return response.data
+}
+
+export const handleSendFollow = async(id:number):Promise<IResponse> => {
+    const response = await Axios.post("/account/follow/" + id)
+    return response.data
+} 
+
+export const handleSendUnfollow = async (id: number): Promise<IResponse> => {
+    const response = await Axios.post("/account/unfollow/" + id)
+    return response.data
+  }
+  
+export const getAllRequestedUsers = async():Promise<IResponse> => {
+    const response = await Axios.get("/requests")
+    return response.data
+
+}
+
+export const handleCancelRequest = async (id: number): Promise<IResponse> => {
+    const response = await Axios.delete("/request/cancel/" + id)
+    return response.data
+  }
+
+export const handleAcceptRequest = async (id: number): Promise<IResponse> => {
+    const response = await Axios.patch("/requests/accept/" + id)
+    return response.data
+  }
+
+  export const handleDeclineRequest = async (id: number): Promise<IResponse> => {
+    const response = await Axios.patch("/requests/decline/" + id)
+    return response.data
+  }
+
+  export const handelPostReaction = async(id:number):Promise<IResponse> => {
+    const response =await Axios.post("/posts/react/" +id)
+    return response.data
+}
+
+export const handleAccountBlock = async (id:number):Promise<IResponse> => {
+    const response = await Axios.post("/block/" + id)
+    return response.data
+}
+
+export const handleDeletePost = async (id:number):Promise<IResponse> => {
+    const response = await Axios.delete("/posts/" + id)
+    return response.data
+}
+
+export const handleGetPostById = async (id:number):Promise<IResponse> => {
+    const response = await Axios.get("/posts/" + id)
     return response.data
 }

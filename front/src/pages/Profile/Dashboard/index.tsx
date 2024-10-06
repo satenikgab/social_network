@@ -1,11 +1,11 @@
 import { useOutletContext } from "react-router-dom"
 import { IContextType } from "../../../lib/types"
+import { useRef } from "react"
+import { handleCoverPictureUpload, handlePictureUpload } from "../../../lib/api"
+import { MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCol, MDBContainer, MDBRow, MDBTypography } from "mdb-react-ui-kit"
+import { BASE_URL, DEFAULT_PIC } from "../../../lib/constant"
 
 
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
-import { BASE_URL, DEFAULT_PIC } from "../../../lib/constant";
-import { useRef } from "react";
-import { handleCoverPictureUpload, handlePictureUpload } from "../../../lib/api";
 
 export  function Dashboard() {
     const {account, setAccount} = useOutletContext<IContextType>()
@@ -139,3 +139,7 @@ export  function Dashboard() {
     </div>
   );
 }
+
+
+
+

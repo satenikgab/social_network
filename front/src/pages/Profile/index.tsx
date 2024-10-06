@@ -11,6 +11,7 @@ export const Profile = () => {
     useEffect(() => {
         handleVerify()
         .then(response => {
+            
             if(!response.user){
                 navigate("/login")
             } else {
@@ -47,6 +48,9 @@ export const Profile = () => {
         <NavLink to="/profile/posts">Posts</NavLink>
         <NavLink to="/profile/followers">Followers</NavLink>
         <NavLink to="/profile/following">Following</NavLink>
+        {
+            account.isPrivate &&<NavLink to={"/profile/requests"}>Requests</NavLink>
+        }
         <button onClick={logout}>Logout</button>
       </nav>
       <Outlet

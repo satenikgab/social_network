@@ -14,6 +14,7 @@ import { Search } from './pages/Profile/Search'
 import { Account } from './components/Account'
 
 import { ChangePrivacy } from './pages/Profile/Settings/ChangePrivacy'
+import { Requests } from './pages/Profile/Requests/Requests'
 
 
 
@@ -47,6 +48,11 @@ const routes = createBrowserRouter([
       {
         path:":id",
         element:<Account/>
+
+      },
+      {
+        path:"requests",
+        element:<Requests/>
 
       },
       {

@@ -53,5 +53,6 @@ export const Posts = () => {
        <button  onClick={() => photo.current?.click()}
        className="btn btn-s btn-info my-2">upload</button>
        <Gallery posts={list}/>
+       
     </>
 }
